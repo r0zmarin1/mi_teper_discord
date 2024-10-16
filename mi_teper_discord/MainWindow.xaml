@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-        
-        <ListView ItemsSource="{Binding Chats}" ItemTemplate="{Binding Chat}" >
+        <ListView ItemsSource="{Binding Chats}" Height="400" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            
         </ListView>
-        <TextBox Text="{Binding Author}"/>
-        <TextBox Text="{Binding Text}"/>
-        <Button  Content="Отправить" Click="SendMessage"/>
+        <Label Content="Отправитель"/>
+        <TextBox Text="{Binding Chat.Author}" />
+        <Label Content="Содержание сообщения"/>
+        <TextBox Text="{Binding Chat.Text, UpdateSourceTrigger=PropertyChanged}" KeyDown="EnterIsPressed"/>
+        <Button  Content="Отправить" Click="SendMessage" />
     </StackPanel>
 </Window>
